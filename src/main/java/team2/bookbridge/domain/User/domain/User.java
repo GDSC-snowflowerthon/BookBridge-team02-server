@@ -25,7 +25,7 @@ public class User {
     private String name;
 
     @Column(nullable = true)
-    private  String registeration_number;
+    private  String registration_number;
 
     @Column
     private Role role;
