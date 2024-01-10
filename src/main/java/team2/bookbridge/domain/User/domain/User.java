@@ -1,6 +1,8 @@
 package team2.bookbridge.domain.User.domain;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import  team2.bookbridge.domain.enums.Role;
 import jakarta.persistence.*;
@@ -8,7 +10,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
     @Id
@@ -16,19 +20,23 @@ public class User {
     private Long user_id;
 
     @Column(unique = true, nullable = false)
-    private Long id;
+    private String id;
 
     @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true)
-    private  String registration_number;
+    @Column(nullable = false)
+    private String email;
 
     @Column
+    private  String registration_number;
+
+    @Column(nullable = false)
     private Role role;
+
     @Column
     private LocalDateTime created_at;
 
