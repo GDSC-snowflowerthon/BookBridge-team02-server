@@ -10,7 +10,7 @@ import team2.bookbridge.domain.enums.Role;
 
 @Getter @Setter
 @NoArgsConstructor
-public class UserSigninRequestDto {
+public class UserSignupRequestDto {
 
     @NotBlank(message = "로그인 아이디가 비어있습니다.")
     private String id;
