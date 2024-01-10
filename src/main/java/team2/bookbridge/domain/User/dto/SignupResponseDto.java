@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserSignupResponseDto {
+public class SignupResponseDto {
     private Long user_id;
     private String id;
 
     @Builder
-    public UserSignupResponseDto(Long user_id, String id){
+    public SignupResponseDto(Long user_id, String id){
         this.user_id = user_id;
         this.id = id;
     }
