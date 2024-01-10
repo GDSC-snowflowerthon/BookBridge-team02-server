@@ -1,15 +1,18 @@
 package team2.bookbridge.domain.User.domain;
 
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import  team2.bookbridge.domain.enums.Role;
-import jakarta.persistence.*;
+
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,6 +38,7 @@ public class User {
     private  String registration_number;
 
     @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private Role role;
 
     @Column

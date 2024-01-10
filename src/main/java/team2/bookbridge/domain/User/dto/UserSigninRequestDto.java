@@ -27,7 +27,7 @@ public class UserSigninRequestDto {
     @NotBlank(message = "이메일 주소가 비어있습니다.")
     private String name;
 
-    private String registation_number;
+    private String registration_number;
 
     // 비밀번호 암호화
     public User toEntity(String encodedPassword, Role role) {
@@ -36,7 +36,7 @@ public class UserSigninRequestDto {
                 .password(encodedPassword)
                 .name(this.name)
                 .email(this.email)
-                .registration_number(this.registation_number)
+                .registration_number(this.registration_number)
                 .role(role)
                 .build();
     }
