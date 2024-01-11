@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import  team2.bookbridge.domain.enums.Role;
+import team2.bookbridge.global.common.domain.BaseTimeEntity;
 
 
 import java.time.LocalDateTime;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-public class User {
+public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
@@ -40,12 +41,4 @@ public class User {
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Role role;
-
-    @Column
-    private LocalDateTime created_at;
-
-    @Column
-    private LocalDateTime updated_at;
-
-
 }
