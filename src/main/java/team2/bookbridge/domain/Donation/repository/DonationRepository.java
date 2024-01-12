@@ -10,7 +10,8 @@ import java.util.List;
 @Repository
 public interface DonationRepository extends JpaRepository<Donation, Long> {
     Long countByAndBenefactorAndDeletedFalse(User user);
-    List<Donation> findAllByBenefactorId(Long user_id);
+
+    Donation findByBookId(Long book_id);
     List<Donation> findByBenefactorIdOrderByIdDesc(Long userId);
 
 }

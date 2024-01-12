@@ -3,13 +3,18 @@ package team2.bookbridge.domain.Donation.domain;
 import lombok.Builder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.util.ObjectUtils;
 import team2.bookbridge.domain.Book.domain.Book;
+import team2.bookbridge.domain.Book.dto.BookUpdateRequest;
+import team2.bookbridge.domain.Donation.dto.DonationRequestDto;
 import team2.bookbridge.domain.User.domain.User;
-import team2.bookbridge.domain.enums.DonationStatus;
+import team2.bookbridge.domain.enums.*;
 import team2.bookbridge.global.common.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "donations")
@@ -59,5 +64,16 @@ public class Donation extends BaseTimeEntity {
 
     public void delete(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public void update(Donation donation) {
+        if (!ObjectUtils.isEmpty(donation)) {
+            if(donation.status.equals(DonationStatus.WAITING)){
+                this.status = DonationStatus.ACCEPTANCE;
+            }
+            else{
+                this.status = DonationStatus.WAITING;
+            }
+        }
     }
 }
