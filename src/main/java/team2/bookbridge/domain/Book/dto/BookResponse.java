@@ -42,7 +42,7 @@ public class BookResponse {
 
     public static BookResponse from(Book book) {
         return BookResponse.builder()
-                .benefactorId(book.getDonation().getBenefactor().getUser_id())
+                .benefactorId(book.getDonation().getBenefactor().getId())
                 .bookId(book.getId())
                 .outsideImageUrl(book.getOutsideImageUrl())
                 .insideImageUrl(book.getInsideImageUrl())

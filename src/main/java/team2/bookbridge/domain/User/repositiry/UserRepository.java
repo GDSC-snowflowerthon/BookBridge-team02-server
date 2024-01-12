@@ -6,6 +6,8 @@ import team2.bookbridge.domain.User.domain.User;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    boolean existsById(String id);
-    Optional<User> findById(String id);
+    boolean existsByLoginId(String loginId);
+    boolean existsById(Long id);
+    User findByLoginId(String loginId);
+
 }

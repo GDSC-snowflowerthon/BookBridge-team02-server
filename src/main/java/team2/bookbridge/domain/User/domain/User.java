@@ -6,11 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import team2.bookbridge.domain.Donation.domain.Donation;
 import  team2.bookbridge.domain.enums.Role;
 import team2.bookbridge.global.common.domain.BaseTimeEntity;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,10 +24,11 @@ import java.time.LocalDateTime;
 public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    @Column(name = "user_id")
+    private Long id;
 
     @Column(unique = true, nullable = false)
-    private String id;
+    private String loginId;
 
     @Column(nullable = false)
     private String password;
@@ -37,6 +41,9 @@ public class User extends BaseTimeEntity {
 
     @Column
     private  String registration_number;
+
+    @OneToMany(mappedBy = "benefactor", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Donation> donationList = new ArrayList<>();
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)

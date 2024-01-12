@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SignupResponseDto {
     private Long user_id;
-    private String id;
+    private String login_id;
 
     @Builder
-    public SignupResponseDto(Long user_id, String id){
+    public SignupResponseDto(Long user_id, String loginId){
         this.user_id = user_id;
-        this.id = id;
+        this.login_id = loginId;
     }
 }

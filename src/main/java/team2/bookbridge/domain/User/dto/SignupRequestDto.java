@@ -13,7 +13,7 @@ import team2.bookbridge.domain.enums.Role;
 public class SignupRequestDto {
 
     @NotBlank(message = "로그인 아이디가 비어있습니다.")
-    private String id;
+    private String login_id;
 
     @NotBlank(message = "비밀번호가 비어있습니다.")
     private String password;
@@ -32,7 +32,7 @@ public class SignupRequestDto {
     // 비밀번호 암호화
     public User toEntity(String encodedPassword, Role role) {
         return User.builder()
-                .id(this.id)
+                .loginId(this.login_id)
                 .password(encodedPassword)
                 .name(this.name)
                 .email(this.email)
