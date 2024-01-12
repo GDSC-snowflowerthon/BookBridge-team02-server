@@ -1,13 +1,9 @@
 package team2.bookbridge.domain.User.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import team2.bookbridge.domain.User.dto.LoginRequestDto;
-import team2.bookbridge.domain.User.dto.LoginResponseDto;
-import team2.bookbridge.domain.User.dto.SignupRequestDto;
-import team2.bookbridge.domain.User.dto.SignupResponseDto;
+import org.springframework.web.bind.annotation.*;
+import team2.bookbridge.domain.User.dto.*;
 import team2.bookbridge.domain.User.service.UserService;
 import team2.bookbridge.domain.enums.Role;
 //import team2.bookbridge.global.auth.jwt.JwtTokenUtil;
@@ -30,4 +26,11 @@ public class UserController {
     public LoginResponseDto login(@RequestBody LoginRequestDto requestDto){
         return userService.login(requestDto);
     }
+
+
+    @GetMapping("/user/{user_id}")
+    public MyPageResponseDto mypage(@PathVariable("user_id") Long user_id){
+        return userService.mypage(user_id);
+    }
+
 }
