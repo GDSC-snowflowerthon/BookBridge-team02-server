@@ -6,11 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import team2.bookbridge.domain.Donation.domain.Donation;
 import  team2.bookbridge.domain.enums.Role;
 import team2.bookbridge.global.common.domain.BaseTimeEntity;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -37,6 +40,9 @@ public class User extends BaseTimeEntity {
 
     @Column
     private  String registration_number;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Donation> donationList = new ArrayList<>();
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
