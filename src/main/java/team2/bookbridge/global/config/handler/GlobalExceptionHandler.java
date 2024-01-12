@@ -51,11 +51,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ServletWebRequest servletWebRequest = (ServletWebRequest)request;
         ErrorResponse response;
 
+        String internalServerErrorMessage = (ex.getMessage() != null && !ex.getMessage().isEmpty())
+                ? ex.getMessage() : "Internal Server Error";
         if (statusCode.equals(INTERNAL_SERVER_ERROR)) {
             response = ErrorResponse.builder()
                     .timestamp(now())
                     .status(statusCode.value())
-                    .message("Internal Server Error")
+                    .message(internalServerErrorMessage)
                     .path(servletWebRequest.getRequest().getRequestURI())
                     .remote(servletWebRequest.getRequest().getRemoteAddr())
                     .build();

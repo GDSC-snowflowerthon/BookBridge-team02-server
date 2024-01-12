@@ -3,6 +3,7 @@ package team2.bookbridge.domain.Donation.domain;
 import lombok.Builder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import team2.bookbridge.domain.Book.domain.Book;
 import team2.bookbridge.domain.User.domain.User;
 import team2.bookbridge.domain.enums.DonationStatus;
 import team2.bookbridge.global.common.domain.BaseTimeEntity;
@@ -36,6 +37,9 @@ public class Donation extends BaseTimeEntity {
     @JoinColumn(name = "beneficiary_id")
     private User beneficiary;
 
+    @OneToOne(mappedBy = "donation")
+    private Book book;
+
     @Column(name = "deleted", nullable = false)
     private boolean deleted = false;
 
@@ -47,6 +51,10 @@ public class Donation extends BaseTimeEntity {
 
     public void addBeneficiary(User beneficiary) {
         this.beneficiary = beneficiary;
+    }
+
+    public void addBook(Book book) {
+        this.book = book;
     }
 
     public void delete(boolean deleted) {
