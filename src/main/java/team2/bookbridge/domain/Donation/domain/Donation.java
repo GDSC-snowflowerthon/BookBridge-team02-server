@@ -40,10 +40,6 @@ public class Donation extends BaseTimeEntity {
     @Column(name = "deleted", nullable = false)
     private boolean deleted = false;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id")
-    private Book book;
-
     @Builder
     public Donation(DonationStatus status, User benefactor) {
         this.status = status;
