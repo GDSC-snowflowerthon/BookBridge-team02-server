@@ -37,6 +37,9 @@ public class Donation extends BaseTimeEntity {
     @JoinColumn(name = "beneficiary_id")
     private User beneficiary;
 
+    @OneToOne(mappedBy = "donation")
+    private Book book;
+
     @Column(name = "deleted", nullable = false)
     private boolean deleted = false;
 
@@ -48,6 +51,10 @@ public class Donation extends BaseTimeEntity {
 
     public void addBeneficiary(User beneficiary) {
         this.beneficiary = beneficiary;
+    }
+
+    public void addBook(Book book) {
+        this.book = book;
     }
 
     public void delete(boolean deleted) {
