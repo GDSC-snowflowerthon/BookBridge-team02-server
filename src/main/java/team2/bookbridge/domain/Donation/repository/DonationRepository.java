@@ -5,7 +5,12 @@ import org.springframework.stereotype.Repository;
 import team2.bookbridge.domain.Donation.domain.Donation;
 import team2.bookbridge.domain.User.domain.User;
 
+import java.util.List;
+
 @Repository
 public interface DonationRepository extends JpaRepository<Donation, Long> {
     Long countByAndBenefactorAndDeletedFalse(User user);
+    List<Donation> findAllByBenefactorId(Long user_id);
+    List<Donation> findByBenefactorIdOrderByIdDesc(Long userId);
+
 }

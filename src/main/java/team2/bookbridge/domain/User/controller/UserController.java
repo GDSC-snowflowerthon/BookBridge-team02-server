@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import team2.bookbridge.domain.User.dto.*;
 import team2.bookbridge.domain.User.service.UserService;
 import team2.bookbridge.domain.enums.Role;
+
+import java.util.List;
 //import team2.bookbridge.global.auth.jwt.JwtTokenUtil;
 
 @RestController
@@ -31,6 +33,11 @@ public class UserController {
     @GetMapping("/user/{user_id}")
     public MyPageResponseDto mypage(@PathVariable("user_id") Long user_id){
         return userService.mypage(user_id);
+    }
+
+    @GetMapping("/user/{user_id}/donation")
+    public List<MyDonationResponseDto> myDonation(@PathVariable("user_id") Long user_id){
+        return userService.myDonation(user_id);
     }
 
 }
